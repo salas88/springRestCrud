@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.luv2code.springdemo.entity.Customer;
 import com.luv2code.springdemo.service.CustomerService;
+
 
 @RestController
 @RequestMapping("/api")
@@ -25,8 +27,18 @@ public class CustomerRestController {
 		return customerService.getCustomers();
 		
 	}
-		
 	
+	@GetMapping("/customers/{customerId}")
+	public Customer getCustomeForId(@PathVariable int customerId) {
+		
+		Customer tempCustomer = customerService.getCustomer(customerId);
+		
+		if(tempCustomer == null) 
+			throw new StudentNotFoundException("Student is not found " + customerId);
+		
+		return tempCustomer;
+	
+	}
 }
 
 
