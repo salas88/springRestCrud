@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +43,9 @@ public class CustomerRestController {
 	
 	}
 	
+	
+	// add mapping for POST customers
+	
 	@PostMapping("/customers")
 	public Customer addNewCustomer(@RequestBody Customer theCustomer) {
 		
@@ -51,6 +55,14 @@ public class CustomerRestController {
 		
 		return theCustomer;
 		
+	}
+	
+	// update customer - add mapping for PUT method
+	
+	@PutMapping("/customers")
+	public Customer updateCustomer(@RequestBody Customer theCustomer) {
+		customerService.saveCustomer(theCustomer);
+		return theCustomer;
 	}
 	
 	
