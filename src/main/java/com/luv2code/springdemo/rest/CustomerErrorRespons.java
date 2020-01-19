@@ -1,14 +1,14 @@
 package com.luv2code.springdemo.rest;
 
-public class StudentErrorRespons {
+public class CustomerErrorRespons {
 	
 	private int status;
 	private String message;
 	private long timeStamp;
 	
-	public StudentErrorRespons() {}
+	public CustomerErrorRespons() {}
 
-	public StudentErrorRespons(int status, String message, long timeStamp) {
+	public CustomerErrorRespons(int status, String message, long timeStamp) {
 		this.status = status;
 		this.message = message;
 		this.timeStamp = timeStamp;
